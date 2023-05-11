@@ -16,6 +16,7 @@
 		D39A9DA02A0C1262006290C8 /* SyncNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9D9F2A0C1262006290C8 /* SyncNewsTests.swift */; };
 		D39A9DAA2A0C1262006290C8 /* SyncNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9DA92A0C1262006290C8 /* SyncNewsUITests.swift */; };
 		D39A9DAC2A0C1262006290C8 /* SyncNewsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9DAB2A0C1262006290C8 /* SyncNewsUITestsLaunchTests.swift */; };
+		D39A9DBA2A0C5ED8006290C8 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9DB92A0C5ED8006290C8 /* Feed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D39A9DA92A0C1262006290C8 /* SyncNewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncNewsUITests.swift; sourceTree = "<group>"; };
 		D39A9DAB2A0C1262006290C8 /* SyncNewsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncNewsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D39A9DB82A0C12A1006290C8 /* SyncNewsAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SyncNewsAPI; path = ../SyncNewsAPI; sourceTree = "<group>"; };
+		D39A9DB92A0C5ED8006290C8 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D39A9D882A0C1261006290C8 /* AppDelegate.swift */,
 				D39A9D8A2A0C1261006290C8 /* SceneDelegate.swift */,
 				D39A9D8C2A0C1261006290C8 /* ViewController.swift */,
+				D39A9DB92A0C5ED8006290C8 /* Feed.swift */,
 				D39A9D8E2A0C1261006290C8 /* Main.storyboard */,
 				D39A9D912A0C1261006290C8 /* Assets.xcassets */,
 				D39A9D932A0C1261006290C8 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39A9D8D2A0C1261006290C8 /* ViewController.swift in Sources */,
+				D39A9DBA2A0C5ED8006290C8 /* Feed.swift in Sources */,
 				D39A9D892A0C1261006290C8 /* AppDelegate.swift in Sources */,
 				D39A9D8B2A0C1261006290C8 /* SceneDelegate.swift in Sources */,
 			);
