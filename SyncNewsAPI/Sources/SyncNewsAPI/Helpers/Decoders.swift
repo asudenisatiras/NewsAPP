@@ -11,8 +11,9 @@ public enum Decoders {
     static let dateDecoder: JSONDecoder = {
         let decoder = JSONDecoder()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         return decoder
     }()
 }
+//"yyyy-MM-dd'T'HH:mm:ssZZZZZ"
