@@ -50,6 +50,7 @@ class ViewController: UIViewController, LoadingShowable {
             }
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextPageSegue" {
             if let nextViewController = segue.destination as? DetailsViewController,
@@ -58,11 +59,21 @@ class ViewController: UIViewController, LoadingShowable {
                 nextViewController.selectedNewsAuthor = selectedNews.byline
                 nextViewController.selectedNewsAbstract = selectedNews.abstract
                 nextViewController.selectedNewsURL = URL(string: selectedNews.url!)
-                       }
-                
+                if let multimedia = selectedNews.multimedia?.first,
+                let imageURL = URL(string: multimedia.url!),
+                               let imageData = try? Data(contentsOf: imageURL),
+                               let newsImage = UIImage(data: imageData) {
+                                nextViewController.selectedNewsImage = newsImage
+                            }
+                        }
+                    }
             }
-        }
-    }
+           
+
+            
+
+            }
+                
 
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {

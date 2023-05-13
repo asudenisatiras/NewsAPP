@@ -43,14 +43,18 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
     var selectedNewsTitle: String?
     var selectedNewsAuthor:String?
     var selectedNewsURL: URL?
+    var selectedNewsImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         newsTitle.text = selectedNewsTitle
         authorLabel.text = selectedNewsAuthor
         detailsLabel.text = selectedNewsAbstract
+      // newsImage.image = selectedNewsImage
+        
+        if let newsImages = selectedNewsImage {
+            newsImage.image = newsImages
+            }
+        
     }
-   
-
-    
-
 }
