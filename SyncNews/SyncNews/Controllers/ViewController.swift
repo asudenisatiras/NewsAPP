@@ -61,9 +61,9 @@ class ViewController: UIViewController, LoadingShowable {
                 nextViewController.selectedNewsURL = URL(string: selectedNews.url!)
                 if let multimedia = selectedNews.multimedia?.first,
                 let imageURL = URL(string: multimedia.url!),
-                               let imageData = try? Data(contentsOf: imageURL),
-                               let newsImage = UIImage(data: imageData) {
-                                nextViewController.selectedNewsImage = newsImage
+                let imageData = try? Data(contentsOf: imageURL),
+                let newsImage = UIImage(data: imageData) {
+                nextViewController.selectedNewsImage = newsImage
                             }
                         }
                     }
@@ -73,7 +73,8 @@ class ViewController: UIViewController, LoadingShowable {
             
 
             }
-                
+
+              
 
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
