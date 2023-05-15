@@ -83,46 +83,46 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearchResultEmpty {
-                return 1 // Bulunamadı hücresi için 1 satır
-            } else {
-                return filteredNews.count
-            }
+            return 1 // Bulunamadı hücresi için 1 satır
+        } else {
+            return filteredNews.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isSearchResultEmpty {
-               let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-               
-               let noResultsImage = UIImage(named: "NoResultFound")
-               let imageView = UIImageView(image: noResultsImage)
-               
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            
+            let noResultsImage = UIImage(named: "NoResultFound")
+            let imageView = UIImageView(image: noResultsImage)
+            
             imageView.contentMode = .scaleToFill
-               imageView.translatesAutoresizingMaskIntoConstraints = false
-               
-               cell.contentView.addSubview(imageView)
-               
-               NSLayoutConstraint.activate([
-                   imageView.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-                   imageView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-                   imageView.widthAnchor.constraint(equalToConstant: 200),
-                   imageView.heightAnchor.constraint(equalToConstant: 200)
-               ])
-               
-               return cell
-           } else {
-               let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsTableViewCell
-               cell.configure(news: filteredNews[indexPath.row])
-               return cell
-           }
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            cell.contentView.addSubview(imageView)
+            
+            NSLayoutConstraint.activate([
+                imageView.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+                imageView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+                imageView.widthAnchor.constraint(equalToConstant: 200),
+                imageView.heightAnchor.constraint(equalToConstant: 200)
+            ])
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsTableViewCell
+            cell.configure(news: filteredNews[indexPath.row])
+            return cell
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        let selectedNews = filteredNews[indexPath.row] // Filtrelenmiş haberlerden seçileni al
-                performSegue(withIdentifier: "nextPageSegue", sender: selectedNews)
         
-         
-        }
-   
+        let selectedNews = filteredNews[indexPath.row] // Filtrelenmiş haberlerden seçileni al
+        performSegue(withIdentifier: "nextPageSegue", sender: selectedNews)
+        
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextPageSegue" {
             if let nextViewController = segue.destination as? DetailsViewController,
@@ -132,29 +132,37 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 nextViewController.selectedNewsAbstract = selectedNews.abstract
                 nextViewController.selectedNewsURL = URL(string: selectedNews.url!)
                 if let multimedia = selectedNews.multimedia?.first,
-                let imageURL = URL(string: multimedia.url!),
-                let imageData = try? Data(contentsOf: imageURL),
-                let newsImage = UIImage(data: imageData) {
-                nextViewController.selectedNewsImage = newsImage
+                   let imageURL = URL(string: multimedia.url!) {
+                    URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+                        if let error = error {
+                            print("Error loading image: \(error)")
+                        } else if let data = data, let newsImage = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                nextViewController.selectedNewsImage = newsImage
+                                nextViewController.newsImage.image = newsImage // Yeni satır
                             }
                         }
-                    }
+                    }.resume()
+                }
+                
             }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
     }
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-
+}

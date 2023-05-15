@@ -40,7 +40,7 @@ class NewsTableViewCell: UITableViewCell {
    private func preparePosterImage(with urlString: String?){
 //        let fullPath = "https://static01.nyt.com/images/2023/05/11/multimedia/\(urlString ?? "")"
       
-       if let url = URL(string: urlString!){
+       if URL(string: urlString!) != nil{
   //       newsImageView.sd_setImage(with: url)
            newsImageView.sd_setImage(with: URL(string: urlString!),
          placeholderImage: UIImage(named: "placeholder.png"))

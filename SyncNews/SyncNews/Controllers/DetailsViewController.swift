@@ -74,10 +74,7 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
         
         
         
-        if let newsImages = selectedNewsImage {
-            newsImage.image = newsImages
-        }
-        
+        newsImage.image = selectedNewsImage
     }
     
 
