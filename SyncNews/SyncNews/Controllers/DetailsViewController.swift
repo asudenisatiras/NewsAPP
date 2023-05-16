@@ -103,7 +103,7 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
         }
         
         func updateLikeCountLabel() {
-            likeButton.text = "\(likeCount) Likes"
+            likeButton.text = "\(likeCount) "
         }
     }
     
