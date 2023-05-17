@@ -46,12 +46,12 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
             switch response {
                 
             case .success(let news):
-                print("asude: \(news)")
+                print("success: \(news)")
                 self.news = news
                 self.filteredNews = news
                 self.newsTableView.reloadData()
             case .failure(let error):
-                print("Asude: \(error)")
+                print("error: \(error)")
             }
         }
     }
@@ -72,12 +72,12 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
       }
       
       func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-          searchBar.resignFirstResponder() // Klavyeyi kapat
+          searchBar.resignFirstResponder()
       }
     
     
     @IBAction func openWeather(_ sender: UIButton) {
-        let urlString = "https://www.accuweather.com" // Yönlendirilecek internet sitesinin URL'si
+        let urlString = "https://www.accuweather.com"
               if let url = URL(string: urlString) {
                   let safariViewController = SFSafariViewController(url: url)
                   present(safariViewController, animated: true, completion: nil)
@@ -86,7 +86,7 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
     }
     
     @IBAction func openCurrency(_ sender: UIButton) {
-        let urlString = "https://tr.investing.com/currencies/" // Yönlendirilecek internet sitesinin URL'si
+        let urlString = "https://tr.investing.com/currencies/"
               if let url = URL(string: urlString) {
                   let safariViewController = SFSafariViewController(url: url)
                   present(safariViewController, animated: true, completion: nil)
@@ -94,7 +94,7 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
     }
     
     @IBAction func openSports(_ sender: UIButton) {
-        let urlString = "https://www.skysports.com/" // Yönlendirilecek internet sitesinin URL'si
+        let urlString = "https://www.skysports.com/"
               if let url = URL(string: urlString) {
                   let safariViewController = SFSafariViewController(url: url)
                   present(safariViewController, animated: true, completion: nil)

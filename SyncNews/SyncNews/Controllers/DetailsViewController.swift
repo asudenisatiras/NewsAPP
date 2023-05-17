@@ -74,7 +74,12 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
         updateLikeButton()
         updateLikeCountLabel()
         
-        
+        if isLiked {
+            showAlert(withTitle: "Already Added", message: "This news is already in your favorites.")
+        } else {
+            showAlert(withTitle: "Removed from Favorites", message: "This news has been removed from your favorites.")
+        }
+
         
         
         newsImage.image = selectedNewsImage
@@ -83,42 +88,50 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         if isLiked {
-               // Kullanıcı beğenisini geri çekiyor
+               // User unlikes the news
                isLiked = false
-               
+
                if var likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews") {
-                   // Beğendiği haberlerin içinde seçilen haber var mı?
                    if let index = likedNews.firstIndex(of: selectedNewsTitle ?? "") {
                        likedNews.remove(at: index)
                        UserDefaults.standard.set(likedNews, forKey: "LikedNews")
                    }
                }
-               
-               likeCount = max(0, likeCount - 1) // En az 0 olacak şekilde azaltma işlemi
-            //   likeButton.backgroundColor = .clear // Butonun arka plan rengini temizle (varsayılan renk)
-               
-           } else {
-               // Kullanıcı yeni bir haberi beğeniyor
-               isLiked = true
-               
-               if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews") {
-                   // Daha önce beğenilen haberler var, seçilen haber zaten var mı?
-                   if !likedNews.contains(selectedNewsTitle ?? "") {
-                       UserDefaults.standard.set(likedNews + [selectedNewsTitle ?? ""], forKey: "LikedNews")
-                   }
-               } else {
-                   // Daha önce hiç haber beğenilmemiş, yeni bir liste oluştur
-                   let likedNews = [selectedNewsTitle ?? ""]
-                   UserDefaults.standard.set(likedNews, forKey: "LikedNews")
-               }
-               
-               likeCount += 1 // Beğeni sayacını artırma
-            
-           }
-           
-           updateLikeCountLabel()
-       }
 
+               likeCount = max(0, likeCount - 1)
+               updateLikeButton()
+               updateLikeCountLabel()
+
+               showAlert(withTitle: "Removed from Favorites", message: "This news has been removed from your favorites.")
+           } else {
+               // User likes the news
+               if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews"), likedNews.contains(selectedNewsTitle ?? "") {
+                   showAlert(withTitle: "Already Added", message: "This news is already in your favorites.")
+               } else {
+                   isLiked = true
+
+                   if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews") {
+                       if !likedNews.contains(selectedNewsTitle ?? "") {
+                           UserDefaults.standard.set(likedNews + [selectedNewsTitle ?? ""], forKey: "LikedNews")
+                       }
+                   } else {
+                       let likedNews = [selectedNewsTitle ?? ""]
+                       UserDefaults.standard.set(likedNews, forKey: "LikedNews")
+                   }
+
+                   likeCount += 1
+                   updateLikeButton()
+                   updateLikeCountLabel()
+
+                   showAlert(withTitle: "Added to Favorites", message: "This news has been added to your favorites.")
+               }
+           }
+       }
+    func showAlert(withTitle title: String, message: String) {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
 
     func updateLikeButton() {
         let image = isLiked ? UIImage(named: "filledHeart")?.withRenderingMode(.alwaysOriginal) : UIImage(named: "emptyHeart")?.withRenderingMode(.alwaysOriginal)
@@ -128,10 +141,4 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
     func updateLikeCountLabel() {
         likeCountLabel.setTitle("\(likeCount)", for: .normal)
     }
-    
-    
-    
-    
-    
-    
 }
