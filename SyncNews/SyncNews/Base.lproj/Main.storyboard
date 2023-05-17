@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="216" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J47-7y-che">
-                                        <rect key="frame" x="0.0" y="186" width="393" height="666"/>
+                                        <rect key="frame" x="0.0" y="231" width="393" height="621"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" rowHeight="216" id="RDw-Pi-tng" customClass="NewsTableViewCell" customModule="SyncNews" customModuleProvider="target">
@@ -109,18 +109,11 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="7Mo-Vl-7ee"/>
                                         </connections>
                                     </tableView>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="N8Y-hN-3Bz">
-                                        <rect key="frame" x="0.0" y="130" width="393" height="56"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="k6g-OL-bGd"/>
-                                        </connections>
-                                    </searchBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8j-Cb-UQT">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SyncNews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="um0-B3-dwj">
-                                                <rect key="frame" x="105" y="74" width="183" height="36"/>
+                                                <rect key="frame" x="105.00000000000001" y="74" width="182.33333333333337" height="36"/>
                                                 <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="36"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -135,17 +128,69 @@
                                             <constraint firstItem="um0-B3-dwj" firstAttribute="top" secondItem="X8j-Cb-UQT" secondAttribute="top" constant="74" id="sVQ-cE-5Cr"/>
                                         </constraints>
                                     </view>
+                                    <searchBar contentMode="redraw" placeholder="Search News" translatesAutoresizingMaskIntoConstraints="NO" id="N8Y-hN-3Bz">
+                                        <rect key="frame" x="0.0" y="175" width="393" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="k6g-OL-bGd"/>
+                                        </connections>
+                                    </searchBar>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="eOP-GM-bio">
+                                        <rect key="frame" x="16" y="138" width="361" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pta-8x-gRK">
+                                                <rect key="frame" x="0.0" y="0.0" width="109" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Weather">
+                                                    <fontDescription key="titleFontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
+                                                    <color key="baseBackgroundColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="openWeather:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PYm-10-nOd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UY2-nv-jId">
+                                                <rect key="frame" x="126" y="0.0" width="109" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Currency">
+                                                    <fontDescription key="titleFontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
+                                                    <color key="baseBackgroundColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="openCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZBe-Dr-vzD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSs-qe-tbe">
+                                                <rect key="frame" x="252" y="0.0" width="109" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Sports">
+                                                    <fontDescription key="titleFontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
+                                                    <color key="baseBackgroundColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="openSports:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PUh-Pn-Blx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="N8Y-hN-3Bz" firstAttribute="top" secondItem="eOP-GM-bio" secondAttribute="bottom" constant="7" id="4Pk-zm-y4Y"/>
                                     <constraint firstItem="J47-7y-che" firstAttribute="leading" secondItem="abq-ya-yCr" secondAttribute="leading" id="7Q1-dm-fLL"/>
                                     <constraint firstItem="N8Y-hN-3Bz" firstAttribute="leading" secondItem="abq-ya-yCr" secondAttribute="leading" id="BET-If-sya"/>
                                     <constraint firstItem="X8j-Cb-UQT" firstAttribute="top" secondItem="abq-ya-yCr" secondAttribute="top" id="Ipw-Vg-jSc"/>
-                                    <constraint firstItem="N8Y-hN-3Bz" firstAttribute="top" secondItem="X8j-Cb-UQT" secondAttribute="bottom" id="L0m-eI-YXJ"/>
+                                    <constraint firstItem="eOP-GM-bio" firstAttribute="leading" secondItem="abq-ya-yCr" secondAttribute="leading" constant="16" id="Izu-dC-3SC"/>
+                                    <constraint firstItem="N8Y-hN-3Bz" firstAttribute="top" secondItem="X8j-Cb-UQT" secondAttribute="bottom" constant="45" id="L0m-eI-YXJ"/>
                                     <constraint firstAttribute="trailing" secondItem="J47-7y-che" secondAttribute="trailing" id="OmG-oO-3Ap"/>
                                     <constraint firstItem="X8j-Cb-UQT" firstAttribute="leading" secondItem="abq-ya-yCr" secondAttribute="leading" id="UGs-rf-nGo"/>
                                     <constraint firstAttribute="trailing" secondItem="X8j-Cb-UQT" secondAttribute="trailing" id="WxY-kh-UQX"/>
                                     <constraint firstAttribute="bottom" secondItem="J47-7y-che" secondAttribute="bottom" id="bEK-qy-tM7"/>
+                                    <constraint firstAttribute="trailing" secondItem="eOP-GM-bio" secondAttribute="trailing" constant="16" id="fVP-6C-ykG"/>
+                                    <constraint firstItem="eOP-GM-bio" firstAttribute="top" secondItem="X8j-Cb-UQT" secondAttribute="bottom" constant="8" id="jan-Wx-YxA"/>
                                     <constraint firstAttribute="trailing" secondItem="N8Y-hN-3Bz" secondAttribute="trailing" id="nLa-aw-HAx"/>
                                     <constraint firstItem="J47-7y-che" firstAttribute="top" secondItem="N8Y-hN-3Bz" secondAttribute="bottom" id="wv5-oN-OpK"/>
                                 </constraints>
@@ -263,19 +308,19 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69h-MV-jho">
-                                                <rect key="frame" x="339.33333333333331" y="7.9999999999999991" width="28.666666666666686" height="15.666666666666664"/>
-                                                <color key="tintColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <color key="textColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZX-bA-cL8">
                                                 <rect key="frame" x="16" y="563" width="361" height="35"/>
                                                 <color key="backgroundColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="gray" title="Click to view the news in detail"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Click to view the news in detail">
+                                                    <fontDescription key="titleFontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="detailsSafari:" destination="RMK-FQ-b3Q" eventType="touchUpInside" id="lQp-ah-uc3"/>
                                                 </connections>
@@ -287,9 +332,27 @@
                                                 </constraints>
                                                 <color key="tintColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="suit.heart" catalog="system"/>
                                                 <connections>
                                                     <action selector="likeButtonTapped:" destination="RMK-FQ-b3Q" eventType="touchUpInside" id="pfU-jN-Mnp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFn-wa-xTw">
+                                                <rect key="frame" x="16" y="606" width="361" height="31"/>
+                                                <color key="backgroundColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Your Favorite News">
+                                                    <fontDescription key="titleFontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="likedButton:" destination="RMK-FQ-b3Q" eventType="touchUpInside" id="q99-Lf-ZDO"/>
+                                                    <segue destination="7hx-SP-Z3g" kind="presentation" modalPresentationStyle="fullScreen" id="rgd-gk-Gpd"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -302,24 +365,23 @@
                                             <constraint firstItem="93Z-Gp-zjT" firstAttribute="trailing" secondItem="kTA-iE-2Qx" secondAttribute="trailing" id="Apv-Hd-lLv"/>
                                             <constraint firstAttribute="trailing" secondItem="kTA-iE-2Qx" secondAttribute="trailing" constant="16" id="EgX-rd-ggm"/>
                                             <constraint firstItem="1ZX-bA-cL8" firstAttribute="leading" secondItem="bQc-Ef-Ezv" secondAttribute="leading" constant="16" id="IJm-Bg-5G5"/>
+                                            <constraint firstItem="WFn-wa-xTw" firstAttribute="trailing" secondItem="1ZX-bA-cL8" secondAttribute="trailing" id="MJq-Kg-Aw1"/>
                                             <constraint firstItem="93Z-Gp-zjT" firstAttribute="top" secondItem="bQc-Ef-Ezv" secondAttribute="top" constant="113" id="P0l-xc-uer"/>
                                             <constraint firstItem="93Z-Gp-zjT" firstAttribute="top" secondItem="kTA-iE-2Qx" secondAttribute="bottom" constant="8" id="SF6-Iv-PbE"/>
                                             <constraint firstAttribute="bottom" secondItem="1ZX-bA-cL8" secondAttribute="bottom" constant="126" id="TaY-g3-2vP"/>
                                             <constraint firstAttribute="trailing" secondItem="yQg-SM-oxm" secondAttribute="trailing" constant="16" id="VUl-qC-sBY"/>
                                             <constraint firstItem="iw7-mS-LCk" firstAttribute="top" secondItem="93Z-Gp-zjT" secondAttribute="bottom" constant="16" id="W9f-qW-n36"/>
                                             <constraint firstItem="hH0-CP-yKx" firstAttribute="top" secondItem="bQc-Ef-Ezv" secondAttribute="top" constant="20" id="YZf-Cc-Exa"/>
-                                            <constraint firstAttribute="trailing" secondItem="69h-MV-jho" secondAttribute="trailing" constant="25" id="cPe-Pw-ldl"/>
-                                            <constraint firstItem="kTA-iE-2Qx" firstAttribute="top" secondItem="69h-MV-jho" secondAttribute="bottom" constant="21.329999999999998" id="gJ5-4K-nnf"/>
                                             <constraint firstItem="kTA-iE-2Qx" firstAttribute="top" secondItem="bQc-Ef-Ezv" secondAttribute="top" constant="45" id="lfR-8V-24r"/>
                                             <constraint firstItem="yQg-SM-oxm" firstAttribute="top" secondItem="iw7-mS-LCk" secondAttribute="bottom" constant="42" id="mPS-1s-uPO"/>
-                                            <constraint firstItem="69h-MV-jho" firstAttribute="top" secondItem="bQc-Ef-Ezv" secondAttribute="top" constant="8" id="mnl-jy-XHW"/>
                                             <constraint firstItem="iw7-mS-LCk" firstAttribute="leading" secondItem="93Z-Gp-zjT" secondAttribute="leading" id="rMo-uw-Cp7"/>
+                                            <constraint firstItem="WFn-wa-xTw" firstAttribute="leading" secondItem="1ZX-bA-cL8" secondAttribute="leading" id="rOJ-MZ-pMe"/>
                                             <constraint firstItem="yQg-SM-oxm" firstAttribute="leading" secondItem="bQc-Ef-Ezv" secondAttribute="leading" constant="16" id="tbR-EZ-KA9"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hH0-CP-yKx" secondAttribute="trailing" constant="20" symbolic="YES" id="w4v-ux-Wdc"/>
                                             <constraint firstItem="hH0-CP-yKx" firstAttribute="leading" secondItem="bQc-Ef-Ezv" secondAttribute="leading" constant="309.33333333333331" id="xBd-Fr-G45"/>
                                             <constraint firstItem="iw7-mS-LCk" firstAttribute="trailing" secondItem="93Z-Gp-zjT" secondAttribute="trailing" id="xyz-5G-358"/>
                                             <constraint firstItem="kTA-iE-2Qx" firstAttribute="top" secondItem="hH0-CP-yKx" secondAttribute="bottom" constant="4" id="y5C-NG-A4H"/>
-                                            <constraint firstItem="69h-MV-jho" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bQc-Ef-Ezv" secondAttribute="leading" constant="20" symbolic="YES" id="z0H-cS-kwe"/>
+                                            <constraint firstItem="WFn-wa-xTw" firstAttribute="top" secondItem="1ZX-bA-cL8" secondAttribute="bottom" constant="8" symbolic="YES" id="ylh-WT-d1K"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -349,7 +411,6 @@
                     <connections>
                         <outlet property="authorLabel" destination="iw7-mS-LCk" id="uT6-IH-z8r"/>
                         <outlet property="detailsLabel" destination="yQg-SM-oxm" id="meq-Gu-hvf"/>
-                        <outlet property="likeButton" destination="69h-MV-jho" id="8ri-G2-tya"/>
                         <outlet property="likeCountLabel" destination="hH0-CP-yKx" id="IoJ-Qd-Uiq"/>
                         <outlet property="newsImage" destination="93Z-Gp-zjT" id="94x-fm-WJh"/>
                         <outlet property="newsTitle" destination="kTA-iE-2Qx" id="reC-OJ-ezw"/>
@@ -359,6 +420,95 @@
             </objects>
             <point key="canvasLocation" x="1759.5419847328244" y="-27.464788732394368"/>
         </scene>
+        <!--Liked View Controller-->
+        <scene sceneID="Tpq-si-sT4">
+            <objects>
+                <viewController id="7hx-SP-Z3g" customClass="LikedViewController" customModule="SyncNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o9e-hW-ze7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="169" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IB3-61-aHO">
+                                <rect key="frame" x="0.0" y="115" width="393" height="737"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="737" id="ixN-hI-AlL"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LikedNewsCell" rowHeight="169" id="MV3-T5-REV" customClass="LikedTableViewCell" customModule="SyncNews" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="169"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MV3-T5-REV" id="jFW-zD-5zA">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="169"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dYn-Kn-j0v">
+                                                    <rect key="frame" x="16" y="50" width="77" height="74"/>
+                                                    <color key="tintColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="77" id="qun-JA-ZfE"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EK-1r-Zyw">
+                                                    <rect key="frame" x="101" y="39" width="272" height="91"/>
+                                                    <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4EK-1r-Zyw" secondAttribute="bottom" constant="28" id="0dl-kY-qdt"/>
+                                                <constraint firstItem="4EK-1r-Zyw" firstAttribute="leading" secondItem="dYn-Kn-j0v" secondAttribute="trailing" constant="8" id="3yb-Cb-XEj"/>
+                                                <constraint firstItem="4EK-1r-Zyw" firstAttribute="top" secondItem="jFW-zD-5zA" secondAttribute="topMargin" constant="28" id="718-7c-kJn"/>
+                                                <constraint firstItem="dYn-Kn-j0v" firstAttribute="top" secondItem="jFW-zD-5zA" secondAttribute="topMargin" constant="37" id="N4o-sT-oVm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4EK-1r-Zyw" secondAttribute="trailing" id="Rfm-oi-K28"/>
+                                                <constraint firstItem="dYn-Kn-j0v" firstAttribute="leading" secondItem="jFW-zD-5zA" secondAttribute="leadingMargin" constant="-4" id="g2y-OI-7kD"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dYn-Kn-j0v" secondAttribute="bottom" constant="33" id="ycJ-Yd-Pw8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="4EK-1r-Zyw" id="rY5-QH-bPB"/>
+                                            <outlet property="heartImage" destination="dYn-Kn-j0v" id="q4E-17-dMq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Favorite News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TI4-vl-ST4">
+                                <rect key="frame" x="93" y="86" width="207" height="21"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="21"/>
+                                <color key="textColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJS-8a-tQa">
+                                <rect key="frame" x="10" y="80" width="40" height="35"/>
+                                <color key="tintColor" red="0.6549019814" green="0.1294117719" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="P93-Bi-vdU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PJS-8a-tQa" firstAttribute="leading" secondItem="P93-Bi-vdU" secondAttribute="leading" constant="10" id="0gG-oY-GRz"/>
+                            <constraint firstItem="TI4-vl-ST4" firstAttribute="leading" secondItem="o9e-hW-ze7" secondAttribute="leadingMargin" constant="77" id="0uI-Dr-Psl"/>
+                            <constraint firstItem="TI4-vl-ST4" firstAttribute="centerX" secondItem="o9e-hW-ze7" secondAttribute="centerX" id="34e-oM-S4F"/>
+                            <constraint firstItem="TI4-vl-ST4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PJS-8a-tQa" secondAttribute="trailing" constant="8" symbolic="YES" id="3Lc-io-R5E"/>
+                            <constraint firstItem="IB3-61-aHO" firstAttribute="bottom" secondItem="P93-Bi-vdU" secondAttribute="bottom" id="3cv-Wz-epw"/>
+                            <constraint firstItem="IB3-61-aHO" firstAttribute="centerX" secondItem="TI4-vl-ST4" secondAttribute="centerX" id="9Ee-tj-vg6"/>
+                            <constraint firstItem="PJS-8a-tQa" firstAttribute="top" secondItem="P93-Bi-vdU" secondAttribute="top" constant="80" id="F9h-Ad-pOR"/>
+                            <constraint firstItem="TI4-vl-ST4" firstAttribute="top" secondItem="o9e-hW-ze7" secondAttribute="topMargin" constant="86" id="nZH-WP-hoS"/>
+                            <constraint firstItem="IB3-61-aHO" firstAttribute="leading" secondItem="o9e-hW-ze7" secondAttribute="leading" id="odt-xl-057"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButtonTapped" destination="PJS-8a-tQa" id="1uK-0b-0IM"/>
+                        <outlet property="likedTableView" destination="IB3-61-aHO" id="XCr-fL-0u5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dU4-0L-uA5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2774.8091603053435" y="-49.295774647887328"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
@@ -366,6 +516,7 @@
         <image name="highlighter" catalog="system" width="128" height="120"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
         <image name="newspaper.fill" catalog="system" width="128" height="112"/>
+        <image name="suit.heart" catalog="system" width="128" height="107"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

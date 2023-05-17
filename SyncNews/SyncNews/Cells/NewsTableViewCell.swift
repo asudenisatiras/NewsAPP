@@ -40,13 +40,10 @@ class NewsTableViewCell: UITableViewCell {
    private func preparePosterImage(with urlString: String?){
 //        let fullPath = "https://static01.nyt.com/images/2023/05/11/multimedia/\(urlString ?? "")"
       
-       if URL(string: urlString!) != nil{
-  //       newsImageView.sd_setImage(with: url)
-           newsImageView.sd_setImage(with: URL(string: urlString!),
-         placeholderImage: UIImage(named: "placeholder.png"))
-                
-            
-        }
+       if let urlString = urlString, let url = URL(string: urlString) {
+           newsImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
+       }
+
     }
                 override func setSelected(_ selected: Bool, animated: Bool) {
                     super.setSelected(selected, animated: animated)

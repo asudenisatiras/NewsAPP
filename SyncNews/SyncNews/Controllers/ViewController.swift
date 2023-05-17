@@ -7,7 +7,7 @@
 
 import UIKit
 import SyncNewsAPI
-
+import SafariServices
 
 var news = [Welcome]()
 var title : Welcome?
@@ -74,7 +74,33 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
       func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
           searchBar.resignFirstResponder() // Klavyeyi kapat
       }
-
+    
+    
+    @IBAction func openWeather(_ sender: UIButton) {
+        let urlString = "https://www.accuweather.com" // Yönlendirilecek internet sitesinin URL'si
+              if let url = URL(string: urlString) {
+                  let safariViewController = SFSafariViewController(url: url)
+                  present(safariViewController, animated: true, completion: nil)
+              }
+        
+    }
+    
+    @IBAction func openCurrency(_ sender: UIButton) {
+        let urlString = "https://tr.investing.com/currencies/" // Yönlendirilecek internet sitesinin URL'si
+              if let url = URL(string: urlString) {
+                  let safariViewController = SFSafariViewController(url: url)
+                  present(safariViewController, animated: true, completion: nil)
+              }
+    }
+    
+    @IBAction func openSports(_ sender: UIButton) {
+        let urlString = "https://www.skysports.com/" // Yönlendirilecek internet sitesinin URL'si
+              if let url = URL(string: urlString) {
+                  let safariViewController = SFSafariViewController(url: url)
+                  present(safariViewController, animated: true, completion: nil)
+              }
+    }
+    
             }
 
               
@@ -83,7 +109,7 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearchResultEmpty {
-            return 1 // Bulunamadı hücresi için 1 satır
+            return 1
         } else {
             return filteredNews.count
         }
@@ -146,23 +172,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 }
                 
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }
     }
+    
+    
 }
