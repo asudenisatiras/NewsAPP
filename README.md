@@ -30,5 +30,17 @@ In the application, news is shown on a homepage using the New York Times Top Sto
 https://api.nytimes.com/svc/topstories/v2/home.json?api-key=yourkey
 ```
 ##### More help: https://developer.nytimes.com
+# Screens
+#### 1
+
+https://github.com/asudenisatiras/asudenisatiras_hw2/assets/127339561/405d8eb9-7b79-4346-8313-b84e30cb886e 
+
+### 2 
+
+
+
+
+https://github.com/asudenisatiras/asudenisatiras_hw2/assets/127339561/7377aeb9-615e-4996-831f-ce877a0b5b73
+
 
 
