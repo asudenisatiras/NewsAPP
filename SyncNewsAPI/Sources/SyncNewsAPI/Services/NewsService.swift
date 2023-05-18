@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 public protocol TopNewsServiceProtocol: AnyObject {
-    func fetchTopNews(completion: @escaping (Result<[Welcome], Error>) -> Void)
+    func fetchTopNews(completion: @escaping (Result<[TopStoriesNews], Error>) -> Void)
     
 }
 
@@ -18,7 +18,7 @@ public class TopNewsService: TopNewsServiceProtocol {
     public init() {}
     
     
-    public func fetchTopNews(completion: @escaping (Result<[Welcome], Error>) -> Void) {
+    public func fetchTopNews(completion: @escaping (Result<[TopStoriesNews], Error>) -> Void) {
         
         let urlString = "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=drd83CuzY0DkYcFkO7AUh2naHU6unqMh"
         AF.request(urlString).responseData { response in

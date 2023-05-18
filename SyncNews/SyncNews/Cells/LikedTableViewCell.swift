@@ -11,12 +11,7 @@ class LikedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var authorLabel: UILabel!
     
-    @IBOutlet weak var heartImage: UIImageView!
-    
-    
-    @IBOutlet weak var goToNews: UIButton!
-    
-    
+    @IBOutlet weak var newsImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
       

@@ -9,22 +9,24 @@ import UIKit
 import SyncNewsAPI
 import SafariServices
 
-var news = [Welcome]()
-var title : Welcome?
+var news = [TopStoriesNews]()
+var title : TopStoriesNews?
 
 class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
     
     @IBOutlet weak var newsTableView: UITableView!
     
     @IBOutlet weak var searchButton: UISearchBar!
+    
     let service: TopNewsServiceProtocol = TopNewsService()
-    private var filteredNews: [Welcome] = []
-    private var news: [Welcome] = []
+    
+    private var filteredNews: [TopStoriesNews] = []
+    private var news: [TopStoriesNews] = []
     private var isSearchResultEmpty: Bool = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //fetchNews()
+        
     }
     
     override func viewDidLoad() {
@@ -32,7 +34,6 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
         newsTableView.register(cellType: NewsTableViewCell.self)
         searchButton.delegate = self
         fetchNews()
-        
         
     }
     
@@ -56,24 +57,25 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
         }
     }
     func searchNews(with searchText: String) {
+        
         if searchText.isEmpty {
             filteredNews = news
-        } else {
+    } else {
             filteredNews = news.filter { $0.title?.range(of: searchText, options: [.caseInsensitive, .diacriticInsensitive]) != nil }
-        }
+    }
         
         isSearchResultEmpty = filteredNews.isEmpty
         newsTableView.reloadData()
     }
 
-      
       func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
           searchNews(with: searchText)
-      }
+    }
       
+    
       func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
           searchBar.resignFirstResponder()
-      }
+   }
     
     
     @IBAction func openWeather(_ sender: UIButton) {
@@ -81,7 +83,7 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
               if let url = URL(string: urlString) {
                   let safariViewController = SFSafariViewController(url: url)
                   present(safariViewController, animated: true, completion: nil)
-              }
+           }
         
     }
     
@@ -90,7 +92,8 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
               if let url = URL(string: urlString) {
                   let safariViewController = SFSafariViewController(url: url)
                   present(safariViewController, animated: true, completion: nil)
-              }
+            }
+        
     }
     
     @IBAction func openSports(_ sender: UIButton) {
@@ -98,14 +101,13 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
               if let url = URL(string: urlString) {
                   let safariViewController = SFSafariViewController(url: url)
                   present(safariViewController, animated: true, completion: nil)
-              }
+            }
+        
     }
     
             }
 
               
-
-
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearchResultEmpty {
@@ -152,7 +154,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextPageSegue" {
             if let nextViewController = segue.destination as? DetailsViewController,
-               let selectedNews = sender as? Welcome {
+               let selectedNews = sender as? TopStoriesNews {
                 nextViewController.selectedNewsTitle = selectedNews.title
                 nextViewController.selectedNewsAuthor = selectedNews.byline
                 nextViewController.selectedNewsAbstract = selectedNews.abstract
@@ -165,7 +167,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                         } else if let data = data, let newsImage = UIImage(data: data) {
                             DispatchQueue.main.async {
                                 nextViewController.selectedNewsImage = newsImage
-                                nextViewController.newsImage.image = newsImage // Yeni satır
+                                nextViewController.newsImage.image = newsImage 
                             }
                         }
                     }.resume()
@@ -174,6 +176,5 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
-    
     
 }
