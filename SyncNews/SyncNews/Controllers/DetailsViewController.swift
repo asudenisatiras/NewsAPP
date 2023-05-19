@@ -11,7 +11,7 @@ import SafariServices
 
 class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
     
-
+    
     var isLiked = false
     var likeCount = 0
     
@@ -33,7 +33,7 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
     @IBAction func backButton(_ sender: Any) {
     }
     
-   
+    
     var selectedNewsAbstract: String?
     var selectedNewsTitle: String?
     var selectedNewsAuthor:String?
@@ -42,7 +42,7 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
     
     @IBAction func detailsSafari(_ sender: UIButton) {
         
-        if let url = selectedNewsURL {  // Modelden çekilen URL'yi kontrol edin
+        if let url = selectedNewsURL {
             let safariViewController = SFSafariViewController(url: url)
             safariViewController.delegate = self
             present(safariViewController, animated: true, completion: nil)
@@ -62,66 +62,66 @@ class DetailsViewController: UIViewController,SFSafariViewControllerDelegate {
         detailsLabel.text = selectedNewsAbstract
         
         if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews"), likedNews.contains(selectedNewsTitle ?? "") {
-                isLiked = true
-            }
-            
-            updateLikeButton()
-            
-            newsImage.image = selectedNewsImage
+            isLiked = true
+        }
+        
+        updateLikeButton()
+        
+        newsImage.image = selectedNewsImage
         
         if isLiked {
             showAlert(withTitle: "Already Added", message: "This news is already in your favorites.")
         } else {
             showAlert(withTitle: "Removed from Favorites", message: "This news has been removed from your favorites.")
         }
-
+        
         newsImage.image = selectedNewsImage
     }
     
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         if isLiked {
-              // User unlikes the news
-              isLiked = false
-
-              if var likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews") {
-                  if let index = likedNews.firstIndex(of: selectedNewsTitle ?? "") {
-                      likedNews.remove(at: index)
-                      UserDefaults.standard.set(likedNews, forKey: "LikedNews")
-                  }
-              }
-
-              likeCount = max(0, likeCount - 1)
-              updateLikeButton()
-              showAlert(withTitle: "Removed from Favorites", message: "This news has been removed from your favorites.")
-          } else {
-              // User likes the news
-              if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews"), likedNews.contains(selectedNewsTitle ?? "") {
-                  showAlert(withTitle: "Already Added", message: "This news is already in your favorites.")
-              } else {
-                  isLiked = true
-
-                  if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews") {
-                      if !likedNews.contains(selectedNewsTitle ?? "") {
-                          UserDefaults.standard.set(likedNews + [selectedNewsTitle ?? ""], forKey: "LikedNews")
-                      }
-                  } else {
-                      let likedNews = [selectedNewsTitle ?? ""]
-                      UserDefaults.standard.set(likedNews, forKey: "LikedNews")
-                  }
-
-                  likeCount += 1
-                  updateLikeButton()
-                  showAlert(withTitle: "Added to Favorites", message: "This news has been added to your favorites.")
-              }
-          }
-      }
-    func showAlert(withTitle title: String, message: String) {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alertController, animated: true, completion: nil)
+            
+            isLiked = false
+            
+            if var likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews") {
+                if let index = likedNews.firstIndex(of: selectedNewsTitle ?? "") {
+                    likedNews.remove(at: index)
+                    UserDefaults.standard.set(likedNews, forKey: "LikedNews")
+                }
+            }
+            
+            likeCount = max(0, likeCount - 1)
+            updateLikeButton()
+            showAlert(withTitle: "Removed from Favorites", message: "This news has been removed from your favorites.")
+        } else {
+            
+            if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews"), likedNews.contains(selectedNewsTitle ?? "") {
+                showAlert(withTitle: "Already Added", message: "This news is already in your favorites.")
+            } else {
+                isLiked = true
+                
+                if let likedNews = UserDefaults.standard.stringArray(forKey: "LikedNews") {
+                    if !likedNews.contains(selectedNewsTitle ?? "") {
+                        UserDefaults.standard.set(likedNews + [selectedNewsTitle ?? ""], forKey: "LikedNews")
+                    }
+                } else {
+                    let likedNews = [selectedNewsTitle ?? ""]
+                    UserDefaults.standard.set(likedNews, forKey: "LikedNews")
+                }
+                
+                likeCount += 1
+                updateLikeButton()
+                showAlert(withTitle: "Added to Favorites", message: "This news has been added to your favorites.")
+            }
         }
-
+    }
+    func showAlert(withTitle title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func updateLikeButton() {
         let filledHeartImage = UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal)
         let emptyHeartImage = UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal)

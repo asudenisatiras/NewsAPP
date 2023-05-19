@@ -23,7 +23,7 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
     private var filteredNews: [TopStoriesNews] = []
     private var news: [TopStoriesNews] = []
     private var isSearchResultEmpty: Bool = false
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -60,54 +60,54 @@ class ViewController: UIViewController, LoadingShowable,UISearchBarDelegate {
         
         if searchText.isEmpty {
             filteredNews = news
-    } else {
+        } else {
             filteredNews = news.filter { $0.title?.range(of: searchText, options: [.caseInsensitive, .diacriticInsensitive]) != nil }
-    }
+        }
         
         isSearchResultEmpty = filteredNews.isEmpty
         newsTableView.reloadData()
     }
-
-      func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-          searchNews(with: searchText)
-    }
-      
     
-      func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-          searchBar.resignFirstResponder()
-   }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchNews(with: searchText)
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     
     
     @IBAction func openWeather(_ sender: UIButton) {
         let urlString = "https://www.accuweather.com"
-              if let url = URL(string: urlString) {
-                  let safariViewController = SFSafariViewController(url: url)
-                  present(safariViewController, animated: true, completion: nil)
-           }
+        if let url = URL(string: urlString) {
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true, completion: nil)
+        }
         
     }
     
     @IBAction func openCurrency(_ sender: UIButton) {
         let urlString = "https://tr.investing.com/currencies/"
-              if let url = URL(string: urlString) {
-                  let safariViewController = SFSafariViewController(url: url)
-                  present(safariViewController, animated: true, completion: nil)
-            }
+        if let url = URL(string: urlString) {
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true, completion: nil)
+        }
         
     }
     
     @IBAction func openSports(_ sender: UIButton) {
         let urlString = "https://www.skysports.com/"
-              if let url = URL(string: urlString) {
-                  let safariViewController = SFSafariViewController(url: url)
-                  present(safariViewController, animated: true, completion: nil)
-            }
+        if let url = URL(string: urlString) {
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true, completion: nil)
+        }
         
     }
     
-            }
+}
 
-              
+
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearchResultEmpty {
@@ -145,7 +145,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectedNews = filteredNews[indexPath.row] // Filtrelenmiş haberlerden seçileni al
+        let selectedNews = filteredNews[indexPath.row] 
         performSegue(withIdentifier: "nextPageSegue", sender: selectedNews)
         
         
@@ -167,7 +167,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                         } else if let data = data, let newsImage = UIImage(data: data) {
                             DispatchQueue.main.async {
                                 nextViewController.selectedNewsImage = newsImage
-                                nextViewController.newsImage.image = newsImage 
+                                nextViewController.newsImage.image = newsImage
                             }
                         }
                     }.resume()

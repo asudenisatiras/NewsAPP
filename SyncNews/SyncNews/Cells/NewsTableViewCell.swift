@@ -37,23 +37,23 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     
-   private func preparePosterImage(with urlString: String?){
-       
-  //let fullPath = "https://static01.nyt.com/images/2023/05/11/multimedia/\(urlString ?? "")"
-      
-       if let urlString = urlString, let url = URL(string: urlString) {
-           newsImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
-       }
-
+    private func preparePosterImage(with urlString: String?){
+        
+        //let fullPath = "https://static01.nyt.com/images/2023/05/11/multimedia/\(urlString ?? "")"
+        
+        if let urlString = urlString, let url = URL(string: urlString) {
+            newsImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
+        }
+        
     }
     
     public func search(for searchText: String) -> Bool {
-           guard let authorText = authorLabel.text else { return false }
-           return authorText.localizedCaseInsensitiveContains(searchText)
-       }
-    
-        override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-             
-       }
+        guard let authorText = authorLabel.text else { return false }
+        return authorText.localizedCaseInsensitiveContains(searchText)
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+    }
+}

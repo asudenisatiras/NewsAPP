@@ -37,10 +37,7 @@ public class TopNewsService: TopNewsServiceProtocol {
                 print("***** Geçici bir hata tespit edildi \(error.localizedDescription) ******* ")
             }
         }
-        
-        
+    
     }
-    
-    
     
 }
